@@ -1,0 +1,17 @@
+.opt {
+  padding: 1rem 0;
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 5rem;
+  }
+  h3 {
+    font-size: $fontTitle;
+    font-weight: $fwBold;
+    @include sm-mobile {
+      font-size: $fontLarge;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.contacts {
+  padding: 1rem 0;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 600px 1fr;
+    gap: 8rem;
+
+    @include lg-desktop {
+      max-width: none;
+      gap: 3rem;
+    }
+    @include md-desktop {
+    grid-template-columns: 1fr;
+    }
+  }
+
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    @include md-desktop {
+      flex-direction: column;
+      text-align: center;
+      gap: 30px;
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+
+      small {
+        line-height: 1;
+      }
+
+      p {
+        font-weight: $fwMedium;
+      }
+
+      img {
+        width: 40px;
+      }
+    }
+
+  }
+
+  iframe {
+    border-radius: 30px;
+    border: 1px solid $primaryColor;
+  }
+
+  &__link {
+    line-height: 1;
+    font-weight: $fwBold;
+    font-size: $fontSecondTitle;
+  }
+}

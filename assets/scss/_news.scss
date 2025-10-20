@@ -1,0 +1,133 @@
+.news {
+  padding: 2rem;
+  background-color: $white;
+  @include sm-tablets {
+    padding: .5rem;
+
+  }
+
+  @include sm-mobile {
+    padding: 0 0 0.5rem 0;
+  }
+
+  .title {
+    margin-bottom: 2rem;
+    @include sm-mobile {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__container {
+    border-radius: 0 0 80px 80px;
+    padding: 2rem 0;
+
+    @include sm-mobile {
+      padding: 1rem .5rem 2rem;
+      border-radius: 0 0 50px 50px;
+    }
+    &.bg-white {
+      background-color: $white;
+    }
+  }
+
+  &__list {
+    margin: 0 auto;
+    gap: 50px;
+    max-width: 1400px;
+
+    &.tree {
+      grid-template-columns: repeat(4, 1fr);
+
+      li {
+        &:nth-child(n + 5) {
+          display: flex;
+        }
+      }
+    }
+    @include xxl-desktop {
+      gap: 30px;
+    }
+
+    @include xl-desktop {
+      gap: 20px;
+    }
+
+    @include lg-desktop {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include md-desktop {
+      grid-template-columns:  1fr 1fr;
+    }
+
+    @include sm-tablets {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @include sm-mobile {
+      grid-template-columns: 1fr;
+      gap: 30px 10px;
+    }
+
+    @include sm-mobile-x {
+      grid-template-columns: 1fr;
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: $grayBg;
+      border-radius: 25px;
+      position: relative;
+      box-shadow: 0px 2px   4px 0px #00000013;
+      height: 100%;
+      &:nth-child(n + 5) {
+        display: none;
+      }
+
+      span {
+        right: 15px;
+        bottom: 5px;
+        position: absolute;
+        color: #797979;
+        font-weight: $fwBold;
+        font-size: $fontMedium;
+      }
+
+      img {
+        height: 340px;
+        object-fit: cover;
+        border-radius: 25px;
+        width: 100%;
+        transition: opacity .2s;
+        @include xxl-desktop {
+          height: 300px;
+        }
+
+        @include sm-mobile {
+          height: 350px;
+        }
+
+      }
+    }
+
+  }
+  &__link {
+    padding: 0 1rem 2rem;
+    word-break: break-word;
+  }
+}
+
+@media (any-hover: hover) {
+  .news {
+    &__list {
+      li:hover {
+        img {
+          opacity: .8;
+        }
+      }
+    }
+  }
+}

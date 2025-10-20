@@ -1,0 +1,62 @@
+$xxl-desktop-width: 1600px;
+$xl-desktop-width: 1400px;
+$lg-desktop-width: 1199.98px;
+$md-desktop-width: 991.98px;
+$sm-tablets-width: 767.98px;
+$sm-mobile-width: 479.98px;
+$extra-sm-mobile-width: 359.98px;
+
+/*==========  Desktop First  ==========*/
+
+@mixin xxl-desktop {
+  @media only screen and (max-width: #{$xxl-desktop-width}) {
+    @content
+  }
+}
+
+@mixin xl-desktop {
+  @media only screen and (max-width: #{$xl-desktop-width}) {
+    @content
+  }
+}
+
+@mixin lg-desktop-up {
+  @media only screen and (min-width: #{$lg-desktop-width}) {
+    @content
+  }
+}
+
+
+/* Large devices | 1200px or less */
+@mixin lg-desktop {
+  @media only screen and (max-width: #{$lg-desktop-width}) {
+    @content
+  }
+}
+
+/* Medium devices | 992px or less */
+@mixin md-desktop {
+  @media only screen and (max-width: #{$md-desktop-width}) {
+    @content
+  }
+}
+
+/* Small tablet devices | 768px or less */
+@mixin sm-tablets {
+  @media only screen and (max-width: #{$sm-tablets-width}) {
+    @content
+  }
+}
+
+/* Small mobile devices | 480px or less */
+@mixin sm-mobile {
+  @media only screen and (max-width: #{$sm-mobile-width}) {
+    @content
+  }
+}
+/* Small mobile devices | 360px or less */
+@mixin sm-mobile-x {
+  @media only screen and (max-width: #{$extra-sm-mobile-width}) {
+    @content
+  }
+}

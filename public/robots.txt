@@ -1,0 +1,39 @@
+User-agent: *
+
+
+Sitemap: https://otellica.ru/sitemap.xml
+Host: https://otellica.ru
+
+
+User-agent: Yandex
+Clean-param: C /
+Clean-param: O /
+Clean-param: page_id /
+Clean-param: etext /
+
+
+Clean-param: add-to-cart /mebel/stoly-dlia-otelei-i-gostinic/
+Clean-param: add-to-cart /mebel/stulya-dlya-gostinic-i-oteley/
+Clean-param: add-to-cart /mebel/izgolovya/
+Clean-param: add-to-cart /tekstil/polotenca/
+Clean-param: add-to-cart /tekstil/postelnoe-bele-dlia-gostinic-i-otelei/
+Clean-param: add-to-cart /mebel/shkafy-dlya-gostinic-i-oteley/
+Clean-param: add-to-cart /mebel/tumby-dlya-oteley/
+Clean-param: add-to-cart /tekstil/namatrasniki-optom/
+Clean-param: add-to-cart /tekstil/odeyala-optom/
+
+
+Clean-param: utmstat&ph&st&pt&p&test-tag&banner-sizes&actual-format&pcodever&yprqee /
+Clean-param: add-to-cart /mebel/stoly-dlia-otelei-i-gostinic
+Clean-param: add-to-cart /mebel/stulya-dlya-gostinic-i-oteley
+Clean-param: add-to-cart /mebel/izgolovya
+Clean-param: add-to-cart /tekstil/polotenca
+Clean-param: add-to-cart /tekstil/postelnoe-bele-dlia-gostinic-i-otelei
+Clean-param: add-to-cart /mebel/shkafy-dlya-gostinic-i-oteley
+Clean-param: add-to-cart /mebel/tumby-dlya-oteley
+Clean-param: add-to-cart /tekstil/namatrasniki-optom
+Clean-param: add-to-cart /tekstil/odeyala-optom
+
+
+Disallow: /osnashchenie-fitnes-klubov-tekstil
+Disallow: /thanks

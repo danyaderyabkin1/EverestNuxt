@@ -1,0 +1,257 @@
+.category {
+  padding: 3rem 0;
+  @include sm-tablets {
+    padding: 2rem 0;
+  }
+  @include sm-mobile {
+    padding: 1rem 0;
+  }
+
+  h2 {
+    margin-bottom: 3rem;
+    font-weight: $fwBold;
+    color: $black;
+    @include sm-tablets {
+      margin-bottom: 1.5rem;
+    }
+    @include sm-mobile {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__container {
+    @include lg-desktop {
+      max-width: none;
+    }
+    @include md-desktop {
+      max-width: 100%;
+    }
+  }
+
+  &__filter {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1rem;
+    @include sm-mobile {
+      font-size: $fontSmall;
+      gap: 8px;
+    }
+    .btn-primary {
+      font-size: $fontSmall;
+      margin-right: auto;
+      padding: 5px 10px;
+      display: none;
+      @include md-desktop {
+        display: block;
+      }
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 35px;
+    max-width: 1120px;
+    margin: 0 auto;
+
+    @include lg-desktop {
+      max-width: none;
+      gap: 20px;
+    }
+    @include md-desktop {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cat--form {
+      grid-area: 3 / 3 / 3 / 5;
+    }
+
+
+    &.first--cat {
+      .cat--form {
+        grid-area: 2 / 3 / 3 / 5;
+      }
+      li {
+        @include md-desktop {
+          width: 31%;
+        }
+        @include sm-tablets {
+          width: 47%;
+        }
+        @include sm-mobile {
+          width: 48%;
+
+        }
+        &.cat--form {
+          @include md-desktop {
+            width: 100%;
+          }
+        }
+        &:nth-last-child(2) {
+          grid-area: auto;
+          @include sm-tablets {
+            width: 48%;
+          }
+
+          img {
+            max-height: 260px;
+            object-fit: cover;
+          }
+        }
+
+      }
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform .8s;
+      gap: 20px;
+
+      @include md-desktop {
+        width: 32%;
+      }
+      @include sm-tablets {
+        width: 48%;
+      }
+      &:last-child {
+        background-color: #1F0B45;
+        border-radius: 30px;
+        padding: .5rem 1rem;
+        gap: 0;
+      }
+
+
+      form {
+        h4 {
+          color: $white;
+          font-weight: $fwBold;
+          font-size: $fontSecondTitle;
+          @include sm-mobile {
+            font-size: $fontLarge;
+          }
+          span {
+            display: block;
+            color: $white;
+            font-weight: $fwBold;
+            font-size: $fontDefault;
+
+          }
+        }
+        p {
+          color: $white;
+          font-size: $fontSmall;
+        }
+      }
+
+      &:last-child {
+        @include md-desktop {
+          width: 100%;
+        }
+      }
+
+      &:nth-last-child(2) {
+        grid-area: 3 / 1 / 4 / 3;
+        @include sm-tablets {
+          width: 100%;
+        }
+        a {
+          @include md-desktop {
+            height: 100%;
+          }
+        }
+        img {
+          max-height: 260px;
+          object-fit: cover;
+          @include md-desktop {
+            max-height: none;
+          }
+          @include sm-tablets {
+            max-height: 260px;
+          }
+        }
+      }
+
+      @include sm-tablets {
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      img {
+        width: 100%;
+        transition: transform .8s;
+      }
+
+
+      .h-80 {
+        @include sm-tablets {
+          height: 15rem;
+        }
+      }
+    }
+
+    &.collection {
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 100%;
+      li {
+        &:nth-last-child(2) {
+          grid-area: auto;
+          img {
+            max-height: none;
+          }
+        }
+      }
+      .category__link {
+        height: 100%;
+        h3 {
+          font-size: $fontSecondTitle;
+        }
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    position: relative;
+    border-radius: 30px;
+    width: 100%;
+    img {
+      border-radius: 30px;
+    }
+    h3 {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 30px;
+      font-size: $fontDefault;
+      padding: .5rem 1.5rem;
+      @include lg-desktop {
+        font-size: $fontMedium;
+      }
+      @include sm-tablets {
+        font-size: $fontSmall;
+      }
+      @include sm-mobile {
+        padding: .5rem;
+      }
+    }
+  }
+}
+
+@media (any-hover: hover) {
+  .category {
+    &__list {
+      li {
+        &:hover:not(:last-child) {
+          transform: translateY(-10px);
+        }
+      }
+    }
+  }
+}

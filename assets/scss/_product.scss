@@ -1,0 +1,226 @@
+.product {
+  padding: 0 0 4rem;
+
+  @include lg-desktop {
+    padding: 2rem 0;
+  }
+
+  &__container {
+    h1 {
+      z-index: 1;
+      font-size: $fontBig;
+      font-weight: $fwMedium;
+    }
+
+    @include lg-desktop {
+      max-width: 100%;
+    }
+  }
+
+  &__banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    position: relative;
+    margin-bottom: 2rem;
+    img {position: absolute;
+      width: 100% ;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 60px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #00000040;
+      border-radius: 60px;
+      z-index: 1;
+    }
+
+  }
+
+  &__attributes {
+    background-color: $grayBg;
+    padding: 1rem;
+    border-radius: 20px;
+    width: max-content;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-weight: $fwBold;
+    font-size: $fontLarge;
+  }
+
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    //max-width: 1120px;
+    gap: 30px;
+
+    @include lg-desktop {
+      max-width: 100%;
+    }
+
+    @include md-desktop {
+      grid-template-columns: 1fr;
+      padding: 2rem 0;
+      gap: 15px;
+    }
+
+    &-img {
+      img {
+        transition: opacity .4s;
+        border-radius: 15px;
+        @include lg-desktop {
+          margin: 0 auto;
+        }
+        @include sm-mobile {
+          max-height: 280px;
+          max-width: 100%;
+        }
+      }
+
+
+
+      @include sm-tablets {
+        max-width: 100%;
+      }
+
+    }
+
+    h2 {
+      text-transform: unset;
+      font-size: $fontBig;
+      color: $black;
+      margin-bottom: 1.5rem;
+      font-weight: $fwMedium;
+      @include md-desktop {
+        font-size: $fontDefault;
+        font-weight: $fwBold;
+      }
+    }
+
+
+    strong {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: $black;
+      font-weight: $fwMedium;
+      font-size: $fontSecondTitle;
+      margin-bottom: 1.5rem;
+      span {
+        display: block;
+        background-color: $grayBg;
+        border-radius: 10px;
+        padding: 0.25rem 2.75rem;
+        font-weight: $fwBold;
+      }
+    }
+    &-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      max-width: 580px;
+      @include lg-desktop {
+        justify-content: center;
+        max-width: none;
+      }
+      @include sm-mobile {
+        justify-content: flex-start;
+        gap: .5rem;
+      }
+      li {
+
+        a {
+          display: flex;
+
+          border: 1px solid $primaryColor;
+          border-radius: 15px;
+
+          img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            object-fit: contain;
+            @include sm-mobile {
+              width: 85px;
+              height: 85px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    h4 {
+      font-size: $fontLarge;
+      font-weight: $fwBold;
+      margin-bottom: .25rem;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 0;
+      }
+    }
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    gap: 15px;
+    margin-bottom: 1rem;
+
+    .btn {
+      flex: 1 0 auto;
+    }
+    .btn-transparent {
+      padding: 0.2rem 2rem;
+      border: none;
+      background-color: $grayBg;
+      border-radius: 30px;
+      font-size: $fontDefault;
+      span {
+        border-bottom: 1px solid $primaryColor;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+@media (any-hover: hover) {
+  .product {
+    &__container {
+      a {
+        &:hover img {
+          opacity: .8;
+        }
+      }
+    }
+    .btn-transparent:hover {
+      color: $gray;
+      span {
+        color: $gray;
+      }
+    }
+  }
+
+}

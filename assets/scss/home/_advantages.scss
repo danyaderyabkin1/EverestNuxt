@@ -1,0 +1,179 @@
+.advantages {
+  background-color: $grayBg;
+  padding: 3rem;
+
+  @include xl-desktop {
+    padding: 2rem 1rem;
+  }
+
+  @include lg-desktop {
+    padding: 2rem 0;
+  }
+
+  @include sm-mobile {
+    padding: 1rem 0;
+  }
+
+  &__container {
+    max-width: none;
+    @include md-desktop {
+      padding: 0;
+    }
+  }
+
+  h3 {
+    text-align: center;
+    font-size: $fontTitleAbout;
+    font-weight: $fwExtraBold;
+    margin-bottom: 4rem;
+    @include sm-tablets {
+      font-size: $fontSecondTitle;
+      margin-bottom: 1rem;
+    }
+
+    @include sm-mobile {
+      font-size: $fontLarge;
+    }
+  }
+
+  &__wrap {
+    padding: 1rem;
+    background-color: $white;
+    border-radius: 35px 0 0 35px;
+    max-width: 270px;
+    width: 100%;
+
+    @include sm-tablets {
+      max-width: 90%;
+      margin: 0 auto;
+      border-radius: 35px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 2rem;
+
+    @include xl-desktop {
+      max-width: none;
+    }
+
+    @include lg-desktop {
+      grid-template-columns: 1fr;
+    }
+
+    @include md-desktop {
+      grid-template-columns: 1fr;
+    }
+    @include sm-tablets {
+      gap: .1rem;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+
+
+      @include md-desktop {
+        justify-content: center;
+
+      }
+
+      @include sm-tablets {
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+        gap: .5rem;
+      }
+
+      &:nth-child(2) {
+
+
+        @include sm-tablets {
+          flex-direction: column;
+        }
+      }
+
+      &:nth-child(3) {
+        flex-direction: row-reverse;
+
+        .advantages__wrap {
+          border-radius: 0 35px 35px 0;
+          @include sm-tablets {
+            border-radius: 35px;
+          }
+        }
+        img {
+          border-radius: 35px 0 0 35px;
+          @include sm-tablets {
+            border-radius: 35px;
+          }
+        }
+
+
+        @include sm-tablets {
+          flex-direction: column;
+        }
+
+        div {
+          padding: 1rem;
+        }
+      }
+
+      &:nth-child(4) {
+        flex-direction: row-reverse;
+        .advantages__wrap {
+          border-radius: 0 35px 35px 0;
+          @include sm-tablets {
+            border-radius: 35px;
+          }
+        }
+        img {
+          border-radius: 35px 0 0 35px;
+          @include sm-tablets {
+            border-radius: 35px;
+          }
+        }
+        @include sm-tablets {
+          flex-direction: column;
+        }
+
+        div {
+          padding: 1rem;
+        }
+      }
+
+      h4 {
+        font-weight: $fwExtraBold;
+        margin-bottom: 2rem;
+        @include sm-tablets {
+          margin-bottom: .5rem;
+        }
+      }
+
+      img {
+        max-width: 275px;
+        border-radius: 0 35px 35px 0;
+        @include sm-tablets {
+          margin: 0 0 0 5%;
+          height: 150px;
+          border-radius: 35px;
+          object-fit: cover;
+          max-width: 175px;
+        }
+        @include sm-mobile {
+          display: none;
+        }
+
+      }
+
+      p {
+        font-size: $fontMedium;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,41 @@
+.suggestion {
+  padding: 1rem;
+
+  &__wrap, &__captcha {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  &__captcha {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  form {
+    .btn {
+      font-weight: $fwExtraBold;
+    }
+  }
+
+
+  @include sm-tablets {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+  }
+
+  @include sm-mobile {
+    margin-bottom: 0;
+  }
+
+  &.pink {
+    background-color: $pink;
+    @include sm-tablets {
+      padding: 3rem 0;
+    }
+  }
+
+  &__text {
+    font-size: $fontSmall;
+  }
+}
+

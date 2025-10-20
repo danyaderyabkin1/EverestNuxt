@@ -1,0 +1,14 @@
+.modal {
+  &__title {
+    font-size: $fontLarge;
+    text-align: center;
+    font-weight: $fwBold;
+    margin-bottom: 2rem;
+  }
+
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}

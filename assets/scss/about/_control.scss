@@ -1,0 +1,110 @@
+.control {
+  padding: 2rem;
+  background-color: $grayBg;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-radius: 60px;
+  @include sm-tablets {
+    padding: 3rem 1rem;
+  }
+  @include sm-mobile {
+    padding: 1.5rem 0;
+    border-radius: 30px;
+  }
+
+  &__container {
+    padding: 0 8rem 2rem;
+
+    @include xxl-desktop {
+      max-width: none;
+
+    }
+    @include xl-desktop {
+      padding: 0 2rem 2rem;
+    }
+    @include sm-tablets {
+      padding: 0;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    font-size: $fontTitleAbout;
+    font-weight: $fwExtraBold;
+    color: $textColor;
+    margin-bottom: 3rem;
+    @include sm-tablets {
+      font-size: $fontSecondTitle;
+    }
+    @include sm-mobile {
+      font-size: $fontLarge;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px 10%;
+    @include lg-desktop {
+      flex-direction: column;
+      align-items: center;
+    }
+    @include sm-mobile {
+      gap: 1rem;
+      padding: 0 .5rem;
+    }
+
+    li {
+      width: 45%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: $white;
+      border-radius: 25px;
+      padding: 14px 25px 14px 75px;
+      position: relative;
+      min-height: 100px;
+      @include lg-desktop {
+        width: 90%;
+      }
+      @include sm-tablets {
+        width: 100%;
+        padding: 14px 25px 14px 85px;
+      }
+      @include sm-mobile {
+        padding: 1rem;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: -40px;
+        top: 0;
+        background-color: $white;
+        border-radius: 50%;
+        border: 1px solid $primaryColor;
+        font-size: 60px;
+        @include sm-tablets {
+          top: 50%;
+          transform: translateY(-50%);
+          left: 10px;
+          width: 65px;
+          height: 65px;
+          font-size: 35px;
+        }
+        @include sm-mobile {
+          display: none;
+        }
+      }
+    }
+
+
+  }
+}

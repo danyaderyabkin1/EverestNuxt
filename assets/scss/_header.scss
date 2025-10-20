@@ -1,0 +1,328 @@
+.header {
+  position: sticky;
+  top: 0;
+  border-radius: 10px;
+  padding: 0 1rem;
+  z-index: 99;
+  transition: all .8s;
+  background-color: $white;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.05);
+
+  @include sm-mobile {
+    border-radius: 0;
+    padding: 0 .5rem;
+    background-color: #EFF0F2;
+    box-shadow: none;
+
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    transition: all .8s;
+    background-color: $white;
+    @include xl-desktop {
+      max-width: 100%;
+    }
+    @include lg-desktop {
+      max-width: 100%;
+    }
+    @include md-desktop {
+      justify-content: inherit;
+    }
+     @include sm-mobile {
+       box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.05);
+       padding: 0 1rem;
+       border-radius: 0 0 30px 30px;
+       background-color: $white;
+     }
+
+  }
+  &.circle {
+    border-radius: 40px;
+    padding: 0 2rem;
+    margin: 0 .25rem;
+    box-shadow: none;
+    background-color: transparent;
+    @include md-desktop {
+      padding: 0 .5rem;
+    }
+    @include sm-mobile {
+      padding: .25rem;
+      margin: 0;
+    }
+
+    .header__container {
+      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.05);
+      padding: 0 2rem;
+      border-radius: 60px;
+      background-color: $white;
+      @include md-desktop {
+        max-width: none;
+      }
+      @include sm-mobile {
+        padding: 0 1rem;
+      }
+    }
+  }
+
+
+
+  &__link {
+    &.router-link-active {
+      border-bottom: none;
+    }
+
+    span {
+      font-weight: $fwBold;
+      font-size: $fontSmall;
+      color: $black;
+      display: block;
+      margin-top: -3px;
+      margin-left: 5px;
+      @include sm-mobile {
+        font-size: 10px;
+        margin-top: -1px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  &__logo {
+    width: 150px;
+    @include md-desktop {
+      padding: .5rem 0;
+    }
+
+    @include sm-mobile {
+      width: 110px;
+    }
+  }
+
+  &__info {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    padding: .75rem 0;
+    @include md-desktop {
+      margin-left: auto;
+      margin-right: 1rem;
+    }
+    @include sm-mobile {
+      margin-right: .35rem;
+      line-height: 1.15;
+    }
+  }
+
+  &__phone {
+    a {
+      transition: color .3s;
+      font-size: 22px;
+      font-weight: $fwBold;
+      line-height: 1;
+      @include md-desktop {
+        font-size: $fontDefault;
+      }
+    }
+  }
+
+  &__mail {
+    @include md-desktop {
+      font-size: $fontSmall;
+    }
+  }
+
+
+  .btn-mobile {
+    display: none;
+
+    a {
+      display: flex;
+    }
+
+    @include md-desktop {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .mobile__wrap {
+    display: none;
+    @include md-desktop {
+      display: flex;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-self: stretch;
+  @include md-desktop {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    &.mobile {
+      display: none;
+      @include md-desktop {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: $white;
+        transition: visibility .4s, opacity .4s;
+        padding: 10px 0;
+        border-radius: 30px;
+      }
+
+
+      a {
+        padding: .5rem;
+        justify-content: center;
+        font-weight: $fwBold;
+
+        &.drop {
+          //transform: translateX(7px);
+        }
+
+        &.router-link-active {
+          border: none;
+          background-color: $primaryColor;
+          color: $white;
+          @include sm-tablets {
+            width: 100%;
+          }
+        }
+      }
+
+      .nav__list-dropdown {
+        position: unset;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0;
+
+        a {
+          font-size: $fontSmall;
+        }
+      }
+    }
+
+    li {
+      position: relative;
+      @include md-desktop {
+        text-align: center;
+      }
+    }
+
+    &-dropdown {
+      position: absolute;
+      min-width: 230px;
+      text-wrap: nowrap;
+      top: 100%;
+      right: 1rem;
+      background-color: $white;
+      padding: .25rem 0 .25rem 1rem;
+      border-radius: 20px 0 20px 20px;
+      box-shadow: 1px 1px 9px 2px rgba(0, 0, 0, 0.14);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s, visibility .2s;
+
+      li {
+        &:last-child {
+          a {
+            border: none;
+          }
+        }
+      }
+
+
+      a {
+        display: inline-block;
+        transition: color .2s;
+        padding: .5rem 1rem .5rem 0;
+        border-bottom: 1px solid #ddd;
+        font-size: $fontDefault;
+        width: -webkit-fill-available;
+
+
+        &.router-link-active {
+          color: #C7B6A6;
+        }
+      }
+    }
+  }
+
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: $fwBold;
+    border-bottom: 3px solid transparent;
+    transition: border .3s;
+    gap: 7px;
+    font-size: $fontLarge;
+    height: 100%;
+    margin-right: 2rem;
+
+    @include lg-desktop {
+      font-size: $fontMedium;
+      padding: 0 .75rem;
+      margin-right: 0;
+    }
+
+    &.router-link-active {
+      border-bottom: 3px solid $primaryColor;
+    }
+  }
+}
+
+@media (any-hover: hover) {
+  .header {
+    &__phone {
+      a:hover {
+        color: $grayColor;
+      }
+    }
+  }
+
+  .nav {
+    &__list {
+      &-dropdown {
+        a:hover {
+          color: $primaryColorDark;
+        }
+      }
+    }
+
+    &__item {
+      &:hover ul {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &__link {
+      &:hover {
+        border-bottom: 3px solid $primaryColorDark;
+      }
+    }
+  }
+}

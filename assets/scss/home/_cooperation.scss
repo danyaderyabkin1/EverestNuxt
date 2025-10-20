@@ -1,0 +1,136 @@
+.cooperation {
+  padding: 3rem;
+  border-radius: 70px 70px 0 0;
+  background-color: #fff;
+
+  @include lg-desktop {
+    padding: 1rem;
+  }
+
+  @include sm-tablets {
+    padding: 2rem 0;
+  }
+
+  @include sm-mobile {
+    padding: 1rem 0;
+  }
+
+
+  &.gray {
+    background-color: #F2F2F2;
+  }
+
+  h3 {
+    font-size: $fontBig;
+    font-weight: $fwBold;
+    text-align: center;
+    margin-bottom: 1rem;
+    @include sm-mobile {
+      font-size: $fontSecondTitle;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    margin-bottom: 4rem;
+    @include sm-mobile {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__img {
+    margin: 0 auto 2rem;
+  }
+
+  h4 {
+    text-align: center;
+    font-size: $fontTitle;
+    font-weight: $fwBold;
+    margin-bottom: 3rem;
+    @include sm-mobile {
+      font-size: $fontSecondTitle;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .swiper-why {
+    display: none;
+    @include xl-desktop {
+      display: block;
+    }
+  }
+
+  .swiper {
+    @include sm-mobile {
+      padding: 0 .5rem;
+    }
+  }
+
+  .swiper-slide {
+    height: auto;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+    gap: 50px;
+
+
+    @include xl-desktop {
+      display: none;
+    }
+
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: #F3F3F3;
+      border-radius: 20px;
+      padding: 1rem;
+      img {
+        width: 57px;
+      }
+    }
+
+
+    h5 {
+      font-weight: $fwBold;
+      font-size: $fontSecondTitle;
+      margin-bottom: .5rem;
+      @include sm-mobile {
+        font-size: $fontLarge;
+      }
+    }
+
+    p {
+      font-size: $fontDefault;
+      color: $black;
+      font-weight: $fwSmall;
+    }
+  }
+
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    background-color: $white;
+  }
+
+  &__container {
+    @include lg-desktop {
+      max-width: none;
+    }
+    @include sm-mobile {
+      padding: 0;
+    }
+  }
+
+}

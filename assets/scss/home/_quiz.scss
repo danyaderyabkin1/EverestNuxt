@@ -1,0 +1,34 @@
+.quiz {
+  padding: 3rem;
+  background-color: $pink;
+  border-radius: 30px;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+  @include sm-tablets {
+    padding: 2rem 1rem;
+  }
+
+  @include sm-mobile {
+    padding: 1rem;
+    border-radius: 0;
+  }
+
+  h3 {
+    font-size: $fontBig;
+    font-weight: $fwExtraBold;
+    margin-bottom: .5rem;
+
+    @include sm-tablets {
+      font-size: $fontTitle;
+    }
+    @include sm-mobile {
+      font-size: $fontLarge;
+    }
+  }
+
+  p {
+    color: $black;
+    margin-bottom: 1rem;
+  }
+}

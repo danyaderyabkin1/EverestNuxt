@@ -1,0 +1,84 @@
+.clients {
+  padding: 3rem 0;
+  background-color: #f3f3f3;
+
+  &.gray {
+    background-color: #F2F2F2;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+
+    &.md {
+      margin-bottom: 0;
+      max-height: calc(100vh - 140px);
+      overflow: auto;
+
+      li {
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+
+    @include xl-desktop {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    @include lg-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include md-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include sm-tablets {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    @include sm-mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px 10px;
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-weight: $fwMedium;
+
+      p {
+        @include sm-tablets {
+          font-size: $fontMedium;
+        }
+      }
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      @include sm-tablets {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.pay {
+  padding-top: 3rem;
+  background-color: #EFF0F2;
+
+  @include md-desktop {
+    padding: 6rem 0;
+  }
+
+  @include sm-tablets {
+    padding: 3rem 0;
+  }
+
+  @include sm-mobile {
+    padding: 1rem 0;
+  }
+
+  &__container {
+    max-width: none;
+    border-radius: 80px 80px 0 0;
+    padding: 5rem;
+    background-color: $white;
+
+    @include sm-tablets {
+      padding: 2rem;
+    }
+
+    @include sm-mobile {
+      border-radius: 50px 50px 0 0;
+    }
+  }
+
+  h3 {
+    font-size: $fontBig;
+    font-weight: $fwExtraBold;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    @include md-desktop {
+      font-size: $fontTitle;
+    }
+
+    @include sm-tablets {
+      font-size: $fontSecondTitle;
+    }
+
+    @include sm-mobile {
+      font-size: $fontLarge;
+    }
+  }
+
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1120px;
+    margin: 0 auto;
+    text-align: center;
+    gap: 90px;
+
+    @include md-desktop {
+      grid-template-columns: 1fr 1fr;
+    }
+
+
+    @include sm-tablets {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    img {
+      margin: 0 auto 1rem;
+      background-color: #EFF0F2;
+      border-radius: 50%;
+      padding: .5rem;
+    }
+
+    h4 {
+      font-size: $fontSecondTitle;
+      font-weight: $fwBold;
+      margin-bottom: 1rem;
+      @include md-desktop {
+        font-size: $fontLarge;
+      }
+
+      @include sm-mobile {
+        font-size: $fontDefault;
+      }
+
+    }
+
+    p {
+      font-size: $fontMedium;
+      color: $black;
+    }
+  }
+}

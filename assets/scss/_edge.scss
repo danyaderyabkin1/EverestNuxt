@@ -1,0 +1,179 @@
+.edge {
+  padding: 4rem 0;
+  position: relative;
+
+  @include sm-tablets {
+    padding: 2rem 0;
+  }
+
+  @include sm-mobile {
+    padding: 1rem 0;
+  }
+
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255 255 255 / 50%);
+    z-index: 1;
+  }
+
+  &.gray-bg {
+    background-image: url(/assets/images/ser2.webp);
+    background-size: cover;
+  }
+
+  &__container {
+
+    @include xxl-desktop {
+      max-width: 100%;
+    }
+
+    @include md-desktop {
+      max-width: 100%;
+      padding: 1rem;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+  }
+
+  &__title {
+    font-weight: $fwBold;
+    font-size: $fontBig;
+    @include sm-mobile {
+      font-size: $fontSecondTitle;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: 1;
+    @include md-desktop {
+      margin-bottom: 0;
+    }
+
+
+    strong {
+      font-size: $fontBig;
+      font-weight: $fwExtraBold;
+      text-transform: uppercase;
+      margin-bottom: 5rem;
+      @include sm-tablets {
+        font-size: $fontTitle;
+      }
+      @include sm-mobile {
+        font-size: $fontSecondTitle;
+      }
+    }
+  }
+
+  &__list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    z-index: 1;
+
+    @include xl-desktop {
+      gap: 20px;
+    }
+
+    @include lg-desktop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include md-desktop{
+      grid-template-columns: 1fr;
+    }
+
+
+    li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: 0px 3px 15px 0px #00000014;
+      padding: 1.25rem;
+
+      @include sm-mobile {
+        padding: .5rem;
+      }
+
+      img {
+        position: unset;
+      }
+
+      .edge__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: unset;
+        flex-shrink: 0;
+        width: 90px;
+        height: 90px;
+        background-color: $grayBg;
+        border-radius: 50%;
+        padding: 1rem;
+        background-size: contain;
+        @include sm-mobile {
+          width: 40px;
+          height: 40px;
+          padding: 5px;
+        }
+      }
+
+    }
+
+
+
+    &.four-columns {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1120px;
+      margin: 0 auto;
+      gap: 30px;
+      @include lg-desktop {
+        gap: 20px;
+      }
+      @include md-desktop {
+        grid-template-columns: 1fr;
+      }
+      @include sm-tablets {
+        grid-template-columns:  1fr;
+      }
+
+    }
+
+    h3 {
+      font-size: $fontSecondTitle;
+      font-weight: $fwBold;
+      margin-bottom: .5rem;
+      text-transform: lowercase;
+      &:first-letter {
+        text-transform: uppercase;
+      }
+      @include sm-mobile {
+        font-size: $fontDefault;
+        margin-bottom: .25rem;
+      }
+    }
+
+    p {
+      font-weight: $fwMedium;
+      font-size: $fontMedium;
+    }
+  }
+
+
+}

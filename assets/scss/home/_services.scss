@@ -1,0 +1,102 @@
+.services {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  background: #EFF0F2;
+
+  @include sm-tablets {
+    padding: 1.5rem 0;
+  }
+  @include sm-mobile {
+    padding: 1rem 0;
+  }
+
+  &__container {
+    text-align: center;
+    @include sm-tablets {
+      max-width: none;
+    }
+  }
+
+  &__title {
+    font-size: $fontTitle;
+    margin-bottom: 2rem;
+    font-weight: $fwExtraBold;
+    @include sm-mobile {
+      font-size: $fontLarge;
+    }
+  }
+
+  &__description {
+    margin-bottom: 1.5rem;
+    @include sm-mobile {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__wrap {
+    padding: 1.5rem;
+    background: $white;
+    border-radius: 60px;
+    @include sm-mobile {
+      border-radius: 30px;
+      padding: .5rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+    @include sm-tablets {
+      flex-direction: column;
+    }
+
+    @include sm-mobile {
+      gap: 10px;
+      padding-bottom: 20px;
+    }
+    @include sm-mobile-x {
+      flex-direction: column;
+      width: 90%;
+    }
+  }
+
+  &__img {
+    margin-bottom: 1.5rem;
+    border-radius: 60px;
+    @include sm-tablets {
+      margin-bottom: .5rem;
+      border-radius: 40px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    transition: transform .8s;
+  }
+
+  &__link {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: .75rem 1.25rem;
+    background: #FFFFFFC9;
+    font-weight: $fwExtraBold;
+    border-radius: 10px 0 0 10px;
+    text-transform: uppercase;
+    font-size: $fontMedium;
+  }
+}
+
+@media (any-hover: hover) {
+  .services {
+    &__item {
+      &:hover {
+        transform: translateY(-10px);
+      }
+    }
+  }
+}

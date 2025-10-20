@@ -1,0 +1,50 @@
+.connection {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 80vh;
+  background-color: #C3C3C3;
+
+  @include sm-tablets {
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+
+  h1 {
+    font-weight: $fwMedium;
+    color: $textColor;
+    margin-bottom: 1.5rem;
+    @include sm-tablets {
+      margin-bottom: 1rem;
+    }
+
+    strong {
+      display: block;
+    }
+  }
+
+  &__image {
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+  }
+
+  &__wrap {
+    max-width: 550px;
+    position: relative;
+    z-index: 1;
+
+    p {
+      font-size: $fontSmall;
+      color: $white;
+    }
+  }
+}

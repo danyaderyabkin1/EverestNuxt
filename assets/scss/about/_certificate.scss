@@ -1,0 +1,53 @@
+.certificate {
+  padding: 1rem 0;
+
+  @include sm-tablets {
+    padding: 1rem 0;
+  }
+
+
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 0 auto;
+    padding: 3rem 0;
+    @include sm-mobile {
+      flex-wrap: wrap;
+    }
+
+    a {
+      @include sm-mobile {
+        width: 45%;
+      }
+    }
+
+    @include sm-tablets {
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    img {
+      border-radius: 20px;
+      border: 1px solid $primaryColor;
+      max-width: 300px;
+    }
+  }
+}
+
+.relative.w-64.mx-auto .flex.items-center.justify-between {
+  position: absolute;
+  width: 140%;
+  left: -20%;
+  top: 50%;
+  @include sm-mobile {
+    width: 120%;
+    left: -10%;
+  }
+}
+
+.relative.w-64.mx-auto .flex.items-center.justify-between button {
+  font-size: 4rem;
+  line-height: 1px;
+  color: $grayColor;
+}

@@ -1,0 +1,385 @@
+.hero {
+  display: flex;
+  justify-content: center;
+  height: 73vh;
+  position: relative;
+  background-color: transparent;
+  padding: 1.5rem 3rem;
+  max-height: 825px;
+
+  @include xxl-desktop {
+    height: 70vh;
+  }
+
+  @include xl-desktop {
+    height: 67vh;
+    padding: 1rem;
+  }
+
+  @include lg-desktop {
+    height: 65vh;
+  }
+
+  @include md-desktop {
+    height: 50vh;
+    padding: 1rem 1.5rem;
+  }
+
+  @include sm-tablets {
+    height: 45vh;
+    padding: .5rem;
+  }
+
+  @include sm-mobile {
+    height: auto;
+    min-height: 30vh;
+  }
+
+  //h1 {
+  //  @include sm-mobile {
+  //    font-size: $fontDefault;
+  //  }
+  //}
+
+  &.gray {
+    background-color: #EFF6F9;
+  }
+
+  &__title {
+    font-size: 42px;
+    &.title--main {
+      font-size: $fontBig;
+
+      @include sm-tablets {
+        font-size: $fontTitle;
+      }
+      @include sm-mobile {
+        font-size: $fontLarge;
+        font-weight: $fwExtraBold;
+      }
+    }
+    @include lg-desktop {
+      font-size: $fontBig;
+    }
+    @include sm-tablets {
+      font-size: $fontTitle;
+    }
+    @include sm-mobile {
+      font-size: $fontLarge;
+      font-weight: $fwExtraBold;
+    }
+  }
+
+  &__separator {
+    border-radius: 10px;
+    border-bottom: 3px solid $white;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1rem 8rem;
+    @include lg-desktop {
+      max-width: 100%;
+    }
+
+    @include md-desktop {
+      max-width: none;
+      padding: 1rem 4rem;
+    }
+    @include sm-tablets {
+      padding: 1rem;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0 0 0 / 25%);
+    z-index: 2;
+    border-radius: 60px;
+    display: none;
+  }
+
+
+
+  picture {
+    z-index: 1;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -1;
+      border-radius: 60px;
+      filter: opacity(.7);
+      @include sm-mobile {
+        border-radius: 30px;
+        filter: opacity(.5);
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+    z-index: 3;
+    max-width: 980px;
+    &.swp {
+      background-color: #FFFFFF73;
+      border-radius: 30px;
+      padding: 2rem;
+      gap: 1rem;
+    }
+    @include sm-mobile {
+      gap: 1rem;
+    }
+  }
+
+  &__btn {
+    border-radius: 30px 0 0 30px ;
+    padding: 0.5rem 1rem;
+    text-transform: initial;
+    font-size: $fontLarge;
+    font-weight: $fwBold;
+    text-align: left;
+    min-width: 280px;
+    backdrop-filter: blur(7px);
+    background: #FFFFFF73;
+    color: $black;
+
+    @include sm-mobile {
+      padding: .25rem 1rem;
+      font-size: $fontMedium;
+      line-height: 2;
+    }
+
+  }
+
+  &__wrap {
+    &-btn {
+      display: flex;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 660px;
+    gap: 10px;
+    &.swp {
+      max-width: 850px;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: flex-start;
+      img {
+        width: auto !important;
+      }
+    }
+
+    @include sm-mobile {
+      gap: 5px;
+    }
+
+    ul {
+      color: $white;
+      font-size: $fontLarge;
+      @include sm-mobile {
+        font-size: $fontMedium;
+        font-weight: $fwBold;
+      }
+    }
+
+
+
+    h1, p, ul {
+      text-transform: initial;
+      color: $white;
+      @include sm-mobile {
+        color: $white;
+      }
+    }
+
+    &.contrast {
+      h1, p, ul {
+        color: $black;
+      }
+
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    backdrop-filter: blur(7px);
+    background: #FFFFFF73;
+    padding: 0.25rem;
+    border-radius: 0 30px 30px 0;
+    @include sm-mobile {
+      padding: 0.25rem .25rem .25rem 0;
+
+    }
+
+    &-wrapper {
+      backdrop-filter: blur(7px);
+      background: #FFFFFF73;
+      display: flex;
+      border-radius: 20px;
+      gap: .5rem;
+      @include sm-mobile {
+        gap: 0;
+      }
+    }
+
+    a {
+      display: flex;
+      border-radius: 10px;
+      background-color: #fff;
+
+      @include sm-mobile {
+        padding: .1rem;
+      }
+
+      span {
+        color: $white;
+      }
+
+      &.what {
+        border-radius: 50%;
+        span {
+          color: #25d366;
+          @include sm-mobile {
+            width: 1.75rem;
+            height: 1.75rem;
+          }
+        }
+      }
+
+      &.tg {
+        border-radius: 50%;
+        span {
+          color: #2ca5e0;
+          @include sm-mobile {
+            width: 1.75rem;
+            height: 1.75rem;
+          }
+        }
+      }
+    }
+  }
+  .hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-swiper-desktop {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-swiper-mobile {
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  .hero-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 60px;
+    filter: opacity(.7);
+  }
+
+  .hero-slider :deep(.swiper-pagination) {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .hero-slider :deep(.swiper-pagination-bullet) {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .hero-slider :deep(.swiper-pagination-bullet:hover) {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+  }
+
+  .hero-slider :deep(.swiper-pagination-bullet-active) {
+    background: #D0B6A7; /* ваш основной цвет */
+    transform: scale(1.2);
+  }
+
+  /* Для контрастного баннера (когда текст темный) */
+  .hero-slider :deep(.contrast ~ .swiper-pagination .swiper-pagination-bullet) {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-slider :deep(.contrast ~ .swiper-pagination .swiper-pagination-bullet:hover) {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-slider :deep(.contrast ~ .swiper-pagination .swiper-pagination-bullet-active) {
+    background: #5D5B59; /* темный цвет для контраста */
+  }
+
+
+  /* Скрываем десктоп слайдер на мобильных */
+  @media (max-width: 650px) {
+    .hero-swiper-desktop {
+      display: none;
+    }
+
+    .hero-swiper-mobile {
+      display: block;
+    }
+
+    .hero-slider img {
+      border-radius: 30px;
+      filter: opacity(.5);
+    }
+    .hero-slider :deep(.swiper-pagination) {
+      bottom: 15px;
+    }
+
+    .hero-slider :deep(.swiper-pagination-bullet) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  /* Скрываем мобильный слайдер на десктопе */
+  @media (min-width: 651px) {
+    .hero-swiper-mobile {
+      display: none;
+    }
+  }
+}

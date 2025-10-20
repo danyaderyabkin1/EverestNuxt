@@ -1,0 +1,61 @@
+.about {
+  padding: 1rem 0;
+
+  @include sm-mobile {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+
+  &__container {
+    @include md-desktop {
+      max-width: none;
+    }
+  }
+
+  h1 {
+    font-size: $fontTitleAbout;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: $fwExtraBold;
+    color: $textColor;
+    text-transform: initial;
+    @include sm-tablets {
+      font-size: $fontTitle;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    gap: 60px;
+    max-width: 1140px;
+    margin: 0 auto;
+
+    @include lg-desktop {
+      gap: 30px;
+    }
+
+    @include md-desktop {
+      flex-direction: column;
+    }
+
+
+    p {
+      font-size: $fontLarge;
+      font-weight: $fwBold;
+      @include sm-tablets {
+        font-size: $fontDefault;
+      }
+    }
+
+    img {
+      height: 380px;
+      border-radius: 50px;
+      @include md-desktop {
+        height: auto;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+  }
+}

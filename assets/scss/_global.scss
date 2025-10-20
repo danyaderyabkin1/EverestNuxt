@@ -1,0 +1,216 @@
+:root {
+  --color-gray-800: 231 231 235;
+}
+
+* {
+  font-family: 'Stem', 'Inter', sans-serif;
+}
+
+body {
+  background-color: $white;
+}
+.jv-mobile > jdiv {
+  bottom: 60px !important;
+
+}
+
+.smart-captcha {
+  @include sm-mobile-x {
+    min-width: auto !important;
+  }
+}
+.SmartCaptcha-Overlay {
+  z-index: 99999999999999 !important;
+}
+body, #__nuxt {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: $textColor;
+  min-width: 320px;
+  @include sm-mobile {
+    font-size: $fontMedium;
+  }
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+p {
+  color: $textColor;
+}
+
+h1 {
+  font-size: $fontTitle;
+  font-weight: $fwBold;
+  @include sm-tablets {
+    font-size: $fontLarge;
+  }
+  @include sm-mobile-x {
+    font-size: $fontDefault;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 1rem;
+  @include md-desktop {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+.modal__container {
+  max-width: 420px;
+  margin:  0 auto;
+}
+
+.error {
+  color: red;
+  font-weight: $fwBold;
+}
+
+.primary--border {
+  border-bottom: 4px solid #2496D7;
+}
+
+.title {
+  text-align: center;
+  font-size: $fontTitleAbout;
+  font-weight: $fwExtraBold;
+  color: $textColor;
+
+  @include sm-tablets {
+    font-size: $fontSecondTitle;
+  }
+
+  @include sm-mobile {
+    font-size: $fontLarge;
+  }
+}
+
+.page-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: $fwMedium;
+  color: $textColor;
+
+  @include sm-tablets {
+    font-size: $fontBig;
+  }
+
+  @include sm-mobile {
+    font-size: $fontTitle;
+  }
+}
+
+
+.gray {
+  color: $gray;
+}
+
+.btn {
+  border-radius: 30px;
+  padding: .5rem 2rem;
+  color: $white;
+  @include sm-mobile {
+    padding: .5rem 1rem;
+    border-radius: 15px;
+    font-size: 13px;
+  }
+}
+
+.btn-primary {
+  background-color: $primaryColor;
+  transition: color .3s, box-shadow .3s;
+  span {
+    transition: color .3s, box-shadow .3s;
+  }
+}
+
+.btn-white {
+  color: $black;
+  background-color: $white;
+  transition: color .3s, background-color .3s;
+}
+
+.btn-second {
+  background-color: $textColor;
+  color: $white;
+  border-radius: 5px;
+  padding: .5rem;
+  text-transform: unset;
+  font-size: $fontSmall;
+  transition: color .3s, background-color .3s;
+  border: 1px solid $textColor;
+}
+.btn-gray{
+  color: $black;
+  background-color: $grayBg;
+}
+
+.btn-transparent {
+  background-color: transparent;
+  color: $textColor;
+  border-radius: 5px;
+  padding: .5rem;
+  text-transform: unset;
+  font-size: $fontSmall;
+  border: 1px solid $textColor;
+  transition: color .3s, background-color .3s;
+
+}
+
+.confetti {
+  position: absolute;
+  top: 0;
+  font-size: 1.6rem;
+  animation: confetti-fall linear 5s infinite;
+}
+
+
+@media (any-hover: hover) {
+  .btn-second {
+    &:hover {
+      background-color: transparent;
+      color: $textColor;
+    }
+  }
+  .btn-white {
+    &:hover {
+      background-color: $primaryColor;
+      color: $white;
+    }
+  }
+  .btn-transparent {
+    &:hover {
+      background-color: $textColor;
+      color: $white;
+    }
+  }
+
+  .btn-primary {
+    &:hover {
+      box-shadow: 0 2px 6px -1px $primaryColorDark;
+      span {
+        color: $white;
+      }
+    }
+    &:disabled:hover {
+      box-shadow: none;
+      color: $textColor;
+    }
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100%) rotate(0);
+  }
+  100% {
+    transform: translateY(100vh) rotate(180deg);
+  }
+}

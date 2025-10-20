@@ -1,0 +1,9 @@
+.map {
+  &__container {
+    @include md-desktop {
+      max-width: none;
+      padding: 0;
+
+    }
+  }
+}

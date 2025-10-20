@@ -1,0 +1,10 @@
+.gallery {
+  &__list {
+    display: flex;
+    @include sm-mobile {
+      flex-direction: column;
+      gap: 10px;
+      padding: 1rem;
+    }
+  }
+}

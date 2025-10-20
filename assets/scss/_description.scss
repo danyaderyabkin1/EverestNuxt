@@ -1,0 +1,65 @@
+.description {
+  padding: 3rem 0;
+  &__container {
+    background-color: $white;
+    border-radius: 50px;
+    @include sm-mobile {
+      border-radius: 20px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+
+  @include sm-tablets {
+    padding: 2rem 0;
+  }
+  @include sm-mobile {
+    padding: 1rem 0;
+  }
+
+  &__list {
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    gap: 40px 70px;
+
+
+    @include sm-tablets {
+      gap: 25px;
+      grid-template-columns: 1fr;
+    }
+
+    h3 {
+      font-size: $fontLarge;
+      font-weight: $fwBold;
+      margin-bottom: 1rem;
+      @include sm-mobile {
+        font-size: $fontDefault;
+        margin-bottom: .25rem;
+      }
+    }
+  }
+
+  &__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        border: 1px solid $primaryColor;
+        border-radius: 50%;
+@include sm-mobile {
+  width: 60px;
+  height: 60px;
+}
+      }
+
+  }
+}
