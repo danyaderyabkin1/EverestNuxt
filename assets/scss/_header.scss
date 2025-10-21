@@ -6,7 +6,7 @@
   z-index: 99;
   transition: all .8s;
   background-color: $white;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
 
   @include sm-mobile {
     border-radius: 0;

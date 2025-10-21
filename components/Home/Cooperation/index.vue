@@ -93,7 +93,7 @@ const cooperationItems = ref([
                   :breakpoints="breakpoints"
               >
                 <SwiperSlide v-for="(slide,index) in cooperationItems" :key="slide.id">
-                  <div class="h-full flex items-start gap-4 bg-white rounded-2xl p-3">
+                  <div class="h-full flex items-start gap-4 bg-[#F3F3F3] rounded-2xl p-3">
                     <img class="w-8" :src="`/assets/images/home/${slide?.icon}`" alt="image">
                     <div>
                       <h5 class="font-semibold">{{slide?.title}}</h5>

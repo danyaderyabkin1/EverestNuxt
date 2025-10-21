@@ -23,6 +23,10 @@ const props = defineProps({
     type: [String, Array],
     required: false
   },
+  btnText: {
+    type: String,
+    required: false
+  },
   contrast: {
     type: Boolean,
     required: false,
@@ -31,6 +35,11 @@ const props = defineProps({
   bgColor: {
     type: Boolean,
     required: false,
+  },
+  breadcrumb: {
+    type: Boolean,
+    required: false,
+    default: false
   },
   notMainBanner: {
     type: Boolean,
@@ -115,16 +124,25 @@ const swiperOptions = {
 
       <div class="hero__container">
         <div :class="{contrast: contrast}" class="hero__wrapper">
+          <UBreadcrumb
+              v-if="breadcrumb"
+              class="text-white flex  custom-breadcrumb"
+              divider="-"
+              :ui="{
+                  label: 'text-white font-light',
+              }"
+              :links="[{ label: 'Главная', to: '/' }, {label: 'Каталог продукции', to: '/catalog'}, {label: title}]"
+          />
           <h1 class="hero__title" :class="{'title--main': !notMainBanner}">{{ title }}</h1>
           <div v-if="notMainBanner" class="hero__separator my-2"></div>
-          <p>{{ description }}</p>
+          <p class="hero__description">{{ description }}</p>
           <ul v-if="secondDescription">
             <li v-for="(item, i) in secondDescription" :key="i">{{ item }}</li>
           </ul>
         </div>
 
         <div class="hero__wrap-btn">
-          <NuxtLink to="/krovati" class="btn btn-primary hero__btn" type="button">Перейти в каталог</NuxtLink>
+          <NuxtLink to="/catalog" class="btn btn-primary hero__btn" type="button">{{btnText || 'Перейти в каталог'}}</NuxtLink>
           <div class="hero__contacts">
             <div class="hero__contacts-wrapper">
               <a
@@ -173,4 +191,5 @@ const swiperOptions = {
   opacity: 1;
   transform: scale(1.1);
 }
+
 </style>

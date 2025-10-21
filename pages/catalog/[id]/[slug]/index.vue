@@ -9,6 +9,35 @@ const {data: product} = await useAsyncData(() => fetchProduct(cleanPath))
 // Выбранные опции - теперь храним объект с groupId и выбранным sku.id
 const selectedOptions = ref<Record<string, number>>({})
 
+
+// Реактивная переменная для управления показом всех характеристик
+const showAllFeatures = ref(false)
+
+
+const activeTab = ref('description') // 'description' или 'features'
+
+// Проверяем наличие контента для табов
+const hasDescription = computed(() => product.value?.content)
+const hasFeatures = computed(() => product.value?.features?.length)
+
+
+
+// Функция для переключения отображения
+const toggleFeatures = () => {
+  showAllFeatures.value = !showAllFeatures.value
+}
+
+// Вычисляемое свойство для отображаемых характеристик
+const displayedFeatures = computed(() => {
+  if (!product.value?.features) return []
+
+  if (showAllFeatures.value) {
+    return product.value.features // Показываем все
+  } else {
+    return product.value.features.slice(0, 8) // Показываем только первые 8
+  }
+})
+
 // Функция для группировки SKU по description
 const groupedSku = computed(() => {
   if (!product.value?.sku) return []
@@ -173,6 +202,13 @@ if (!product.value) {
     statusMessage: 'Страница не найдена!'
   })
 }
+
+// Устанавливаем активный таб по умолчанию
+onMounted(() => {
+  if (!hasDescription.value && hasFeatures.value) {
+    activeTab.value = 'features'
+  }
+})
 const cleanText = (html:string) => html.replace(/<[^>]*>/g, '')
 </script>
 
@@ -180,9 +216,8 @@ const cleanText = (html:string) => html.replace(/<[^>]*>/g, '')
   <main class="main">
     <section class="product">
       <div class="container product__container">
-        <h1>{{product?.title}}</h1>
         <UBreadcrumb
-            class="mb-8 text-gray-300 flex custom-breadcrumb"
+            class=" text-gray-300 flex custom-breadcrumb"
             divider="-"
             :ui="{
                     label: 'text-gray-500 font-light',
@@ -191,8 +226,9 @@ const cleanText = (html:string) => html.replace(/<[^>]*>/g, '')
                     list: 'text-gray-500',
                     link: 'text-gray-300'
                 }"
-            :links="[{ label: 'Главная', to: '/' }, {label: 'Кровати', to: '/krovati'}, { label: cleanText(product?.title) }]"
+            :links="[{ label: 'Comfy', to: '/' }, {label: 'Кровати', to: '/krovati'}, { label: cleanText(product?.title) }]"
         />
+        <h1>{{product?.title}}</h1>
         <div class="product__wrap">
           <div class="product__wrap-img">
             <a :href="product?.image" data-fancybox="gallery">
@@ -207,57 +243,139 @@ const cleanText = (html:string) => html.replace(/<[^>]*>/g, '')
             </ul>
           </div>
           <div class="flex-1">
-            <h2>{{product?.title}}</h2>
+            <div class="product__wrapper">
+              <div
+                  v-if="displayedFeatures.length"
+                  :class="{'eight': !showAllFeatures && product?.features.length > 8}"
+                  class="product__attributes"
+              >
+                <p v-for="(feature, i) in displayedFeatures" :key="i">
+                  {{ feature?.title }}: {{ feature?.description }}
+                </p>
+              </div>
 
-            <div class="flex items-start gap-24">
+              <button
+                  v-if="product?.features.length > 8"
+                  class="btn btn-white mx-auto underline"
+                  @click="toggleFeatures"
+              >
+                {{ showAllFeatures ? 'Скрыть' : 'Все характеристики' }}
+              </button>
+            </div>
+
+            <div class="flex flex-col flex-wrap lg:flex-row  gap-0 lg:gap-24 mb-5 lg:mb-0">
               <div class="price-container">
                 <strong class="flex items-center gap-2">
                   <!-- Показываем старую цену если есть скидка на выбранных опциях -->
+                  Цена:
                   <span
                       v-if="hasDiscountOnSelectedOptions"
-                      class="text-lg text-gray-500 line-through"
+                      class="text-lg line-through"
                   >
-                    {{ originalTotalPrice }} ₽
+                   {{ originalTotalPrice }} ₽
                   </span>
-                  <span class="text-2xl">{{ totalPrice }} ₽</span>
+                  <span class="text-2xl"> {{ totalPrice }} ₽</span>
 
                 </strong>
               </div>
-              <div class="product__btns">
-                <button class="btn btn-primary" @click.prevent="isOpen = !isOpen">Заказать</button>
+
+              <div v-if="!productOpacity" class="product__btns">
+                <button class="btn btn-primary" @click.prevent="isOpen = !isOpen">Оставить заявку</button>
+                <button class="btn flex gap-2 items-center btn-transparent" @click.prevent="isOpen = !isOpen">
+                  <svg class="reverse" width="26" height="40" viewBox="0 0 26 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 0.778503L0.109375 13.6691V13.8309V39.2215H25.8906V13.6691L13 0.778503ZM13 1.88324L25.1094 13.9926V38.4402H0.890625V13.9926L13 1.88324Z" fill="currentColor"/>
+                    <path d="M9.875 19.6902C7.938 19.6902 6.35938 21.2689 6.35938 23.2059C6.35938 25.1429 7.938 26.7215 9.875 26.7215C11.812 26.7215 13.3906 25.1429 13.3906 23.2059C13.3906 21.2689 11.812 19.6902 9.875 19.6902ZM9.875 20.4715C11.3898 20.4715 12.6094 21.6911 12.6094 23.2059C12.6094 24.7207 11.3898 25.9402 9.875 25.9402C8.36022 25.9402 7.14062 24.7207 7.14062 23.2059C7.14062 21.6911 8.36022 20.4715 9.875 20.4715Z" fill="#EBD300"/>
+                    <path d="M16.125 25.9402C14.188 25.9402 12.6094 27.5189 12.6094 29.4559C12.6094 31.3929 14.188 32.9715 16.125 32.9715C18.062 32.9715 19.6406 31.3929 19.6406 29.4559C19.6406 27.5189 18.062 25.9402 16.125 25.9402ZM16.125 26.7215C17.6398 26.7215 18.8594 27.9411 18.8594 29.4559C18.8594 30.9707 17.6398 32.1902 16.125 32.1902C14.6102 32.1902 13.3906 30.9707 13.3906 29.4559C13.3906 27.9411 14.6102 26.7215 16.125 26.7215Z" fill="currentColor"/>
+                    <path d="M18.9736 19.8047L6.47363 32.3047L7.026 32.8571L19.526 20.3571L18.9736 19.8047Z" fill="currentColor"/>
+                    <path d="M1.67188 31.0184V37.659H8.3125V36.8777H2.45312V31.0184H1.67188Z" fill="currentColor"/>
+                    <path d="M13 4.06525C12.3574 4.06525 11.8281 4.59454 11.8281 5.23712C11.8281 5.8797 12.3574 6.409 13 6.409C13.6426 6.409 14.1719 5.8797 14.1719 5.23712C14.1719 4.59454 13.6426 4.06525 13 4.06525ZM13 4.8465C13.2204 4.8465 13.3906 5.01676 13.3906 5.23712C13.3906 5.45748 13.2204 5.62775 13 5.62775C12.7796 5.62775 12.6094 5.45748 12.6094 5.23712C12.6094 5.01676 12.7796 4.8465 13 4.8465Z" fill="currentColor"/>
+                  </svg>
+                  <span class="primary--border">получить скидку</span></button>
               </div>
             </div>
-
-            <div v-if="groupedSku.length" class="sku-groups">
-              <div v-for="group in groupedSku" :key="group.title" class="sku-group">
-                <strong class="sku-group__title">{{ group.title }}</strong>
-                <div class="sku-group__items flex">
-                  <button
-                      v-for="sku in group.items"
-                      :key="sku.id"
-                      class="sku-item bg-gray-100"
-                      :class="{ 'sku-item--selected': isOptionSelected(group.title, sku) }"
-                      @click="selectOption(group.title, sku)"
-                      type="button"
-                  >
-                    <span class="sku-title">{{ sku.title }}</span>
-<!--                    <span v-if="sku.price > 0" class="sku-price">+{{ sku.price }} ₽</span>-->
-                  </button>
-                </div>
-              </div>
+            <div class="flex flex-col flex-wrap lg:flex-row  gap-5 lg:gap-24 mb-5 lg:mb-0">
+              <TheProductDelivery/>
+              <TheProductPay/>
             </div>
 
-            <div v-if="product?.features.length" class="product__attributes">
-              <p v-for="(product, i) in  product?.features" :key="i">{{product?.title}}: {{product?.description}} </p>
-            </div>
-            <a v-if="product?.video_url" href="#video" class="flex w-fit py-2 px-8 rounded-lg font-semibold bg-[#D0B6A7] text-white">Инструкция по сборке</a>
+<!--            <div v-if="groupedSku.length" class="sku-groups">-->
+<!--              <div v-for="group in groupedSku" :key="group.title" class="sku-group">-->
+<!--                <strong class="sku-group__title">{{ group.title }}</strong>-->
+<!--                <div class="sku-group__items flex">-->
+<!--                  <button-->
+<!--                      v-for="sku in group.items"-->
+<!--                      :key="sku.id"-->
+<!--                      class="sku-item bg-gray-100"-->
+<!--                      :class="{ 'sku-item&#45;&#45;selected': isOptionSelected(group.title, sku) }"-->
+<!--                      @click="selectOption(group.title, sku)"-->
+<!--                      type="button"-->
+<!--                  >-->
+<!--                    <span class="sku-title">{{ sku.title }}</span>-->
+<!--                    &lt;!&ndash;                    <span v-if="sku.price > 0" class="sku-price">+{{ sku.price }} ₽</span>&ndash;&gt;-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+
           </div>
         </div>
       </div>
-      <div v-if="product?.content" class="container product__container">
-        <div v-html="product?.content"></div>
+      <div v-if="hasDescription || hasFeatures" class="container product__container">
+        <!-- Табы -->
+        <div class="product-tabs">
+          <button
+              v-if="hasDescription"
+              class="product-tab"
+              :class="{ 'product-tab--active': activeTab === 'description' }"
+              @click="activeTab = 'description'"
+          >
+            Описание
+          </button>
+
+          <button
+              v-if="hasFeatures"
+              class="product-tab"
+              :class="{ 'product-tab--active': activeTab === 'features' }"
+              @click="activeTab = 'features'"
+          >
+            Характеристики
+          </button>
+        </div>
+
+        <!-- Контент табов -->
+        <div class="product-tab-content">
+          <!-- Описание -->
+          <div
+              v-if="hasDescription && activeTab === 'description'"
+              class="product-tab-panel"
+          >
+            <div v-html="product?.content"></div>
+          </div>
+
+          <!-- Характеристики -->
+          <div
+              v-if="hasFeatures && activeTab === 'features'"
+              class="product-tab-panel"
+          >
+            <div class="max-w-4xl">
+              <div class="product__wrapper">
+                <div class="product__attributes">
+                  <p
+                      v-for="(feature, i) in product?.features"
+                      :key="i"
+                      class="feature-item"
+                  >
+                    <span class="feature-title">{{ feature?.title }}:</span>
+                    <span class="feature-description">{{ feature?.description }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-<!--      <ProductDescription/>-->
+      <!--      <ProductDescription/>-->
 
       <UModal v-model="isOpen"
               :ui="{ container: 'items-start pt-14 bg-white sm:bg-gray-50/50', shadow: 'shadow-none sm:shadow-lg', padding: 'p-0 sm:p-0', rounded: 'rounded-none sm:rounded-lg' }"
@@ -267,17 +385,10 @@ const cleanText = (html:string) => html.replace(/<[^>]*>/g, '')
           <UButton
               color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1 modal__close"
               @click="isOpen = false"/>
-          <TheModalForm :form-id="38" title="Сделать заказ"/>
+          <TheModalForm :form-id="38" title="Оставить заявку"/>
         </div>
       </UModal>
     </section>
-    <section v-if="product?.video_url" id="video" class="video">
-      <div class="container max-w-5xl">
-        <h3 class="text-center text-3xl mb-6">Видеоинструкция по сборке</h3>
-        <p class="mb-0 w-100 position-relative" v-html="product?.video_url"></p>
-      </div>
-    </section>
-    <MainForm/>
   </main>
 </template>
 

@@ -11,7 +11,7 @@ const slides = [
     image: '/assets/images/banners/3c4e0cb1e4e98f184f8172195d278e4adc1cf612.png',
     mobileImage: '/assets/images/banners/3c4e0cb1e4e98f184f8172195d278e4adc1cf612.png', // можно указать другое изображение для мобильных
     icon: '/assets/images/description/sale-percent_svgrepo.com.svg',
-    link: '/krovati',
+    link: '/catalog',
     linkText: 'Смотреть кровати'
   },
   {

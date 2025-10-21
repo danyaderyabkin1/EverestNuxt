@@ -8,8 +8,13 @@
   &__container {
     h1 {
       z-index: 1;
-      font-size: $fontBig;
-      font-weight: $fwMedium;
+      font-size: $fontTitle;
+      font-weight: $fwBold;
+      margin-bottom: 1rem;
+      max-width: 60%;
+      @include md-desktop {
+        max-width: none;
+      }
     }
 
     @include lg-desktop {
@@ -44,12 +49,28 @@
 
   }
 
-  &__attributes {
+  &__wrapper {
     background-color: $grayBg;
-    padding: 1rem;
     border-radius: 20px;
-    width: max-content;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
+    @include sm-tablets {
+      padding: .5rem;
+    }
+  }
+
+  &__attributes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    padding: 1rem 1rem 0;
+    margin-bottom: .5rem;
+    @include sm-tablets {
+      grid-template-columns: 1fr;
+      padding: .5rem;
+    }
   }
   h3 {
     font-weight: $fwBold;
@@ -76,7 +97,8 @@
     &-img {
       img {
         transition: opacity .4s;
-        border-radius: 15px;
+        border-radius: 40px;
+        border: 1px solid $gray;
         @include lg-desktop {
           margin: 0 auto;
         }
@@ -117,8 +139,8 @@
       margin-bottom: 1.5rem;
       span {
         display: block;
-        background-color: $grayBg;
-        border-radius: 10px;
+        background-color: #2496D829;
+        border-radius: 25px;
         padding: 0.25rem 2.75rem;
         font-weight: $fwBold;
       }
@@ -128,7 +150,6 @@
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 1rem;
-      max-width: 580px;
       @include lg-desktop {
         justify-content: center;
         max-width: none;
@@ -139,15 +160,13 @@
       }
       li {
 
+        width: calc(25% - 1rem);
+
         a {
           display: flex;
-
-          border: 1px solid $primaryColor;
           border-radius: 15px;
 
           img {
-            width: 100px;
-            height: 100px;
             margin: 0 auto;
             object-fit: contain;
             @include sm-mobile {
@@ -206,6 +225,35 @@
   }
 }
 
+.product-tabs {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 2rem;
+}
+
+.product-tab {
+  padding: .5rem 0;
+  background: none;
+  font-weight: $fwBold;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+
+.product-tab--active {
+  color: $primaryColor;
+}
+
+.product-tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: $primaryColor;
+}
+
 @media (any-hover: hover) {
   .product {
     &__container {
@@ -221,6 +269,10 @@
         color: $gray;
       }
     }
+  }
+
+  .product-tab:hover {
+    color: $primaryColor;
   }
 
 }

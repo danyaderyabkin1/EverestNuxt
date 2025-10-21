@@ -57,7 +57,7 @@ useHead({
 })
 
 useSeoMeta({
-  title: category.value.meta_title,
+  title: category.value.meta_title || category.value.title,
   description: category.value.meta_description,
   ogTitle: category.value.meta_title,
   ogDescription: category.value.meta_description,
@@ -72,43 +72,19 @@ const cleanText = (html: string) => html.replace(/<[^>]*>/g, '')
 
 <template>
   <main class="main">
-    <div class="container">
-      <UBreadcrumb
-          class="text-gray-300 flex  custom-breadcrumb"
-          divider="-"
-          :ui="{
-        label: 'text-gray-500 font-light',
-        separator: 'text-gray-300',
-        separatorIcon: 'text-gray-500',
-        list: 'text-gray-500',
-        link: 'text-gray-300'
-    }"
-          :links="[{ label: 'Главная', to: '/' }, {label: 'Кровати'}]"
-      />
-      <h1>{{cleanText(category?.title || '')}}</h1>
-    </div>
-<!--    <MainBanner-->
-<!--        :title="cleanText(category?.preview_content)"-->
-<!--        :description="cleanText(category?.content)"-->
-<!--        :not-main-banner="true"-->
-<!--        :bg-color="true"-->
-<!--        :contrast="true"-->
-<!--        :image="category?.image"/>-->
-
-    <!--    <Category :title="category?.title" :id="category?.id"/>-->
-    <ProductsList
-        :title="category?.title"
-        :category-id="category?.id"
-        :grid-four="true"
-    />
-    <MainDescription title="Эверест" :list-items="descriptionItems"/>
-    <MainChoice
-        :title="cleanText(category?.content)"
-        :image="category?.image"
-        :reverse="true"
-    />
-<!--    <MainForm/>-->
-    <MainNewsList/>
+        <Category :id="505" title="Каталог продукции" />
+<!--    <ProductsList-->
+<!--        :title="category?.title"-->
+<!--        :category-id="category?.id"-->
+<!--        :grid-four="true"-->
+<!--    />-->
+<!--    <MainDescription title="Эверест" :list-items="descriptionItems"/>-->
+<!--    <MainChoice-->
+<!--        :title="cleanText(category?.content) || ''"-->
+<!--        :image="category?.image"-->
+<!--        :reverse="true"-->
+<!--    />-->
+    <MainForm/>
   </main>
 </template>
 

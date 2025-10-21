@@ -21,18 +21,18 @@ useSeoMeta({
   ogDescription: product.value?.meta_description,
   ogImage: 'https://otellica.ru/assets/images/logo.webp',
 })
-
+const cleanText = (html:string) => html.replace(/<[^>]*>/g, '')
 
 </script>
 <template>
   <section class="collect">
     <div class="collect__container container">
       <div>
-        <h1>{{ product?.title }}</h1>
+        <h1>{{ cleanText(product?.preview_content) || product?.title }}</h1>
         <UBreadcrumb
             :ui="{label: 'gap-x-3 text-gray-400'}"
             divider="/"
-            :links="[{ label: 'Главная', to: '/' }, { label: 'Наши проекты', to: '/proekty' }, { label: product?.title }]"
+            :links="[{ label: 'Главная', to: '/' }, { label: 'Наши проекты', to: '/proekty' }, { label: cleanText(product?.preview_content) || product?.title }]"
         >
           <template #divider>
             <span class="w-3 h-1 rounded-full bg-gray-300 dark:bg-gray-700"/>

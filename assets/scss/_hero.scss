@@ -121,7 +121,6 @@
       object-position: center;
       z-index: -1;
       border-radius: 60px;
-      filter: opacity(.7);
       @include sm-mobile {
         border-radius: 30px;
         filter: opacity(.5);
@@ -206,6 +205,7 @@
     h1, p, ul {
       text-transform: initial;
       color: $white;
+      white-space: pre-wrap;
       @include sm-mobile {
         color: $white;
       }
@@ -279,6 +279,14 @@
       }
     }
   }
+
+
+  .custom-breadcrumb .text-muted,
+  .custom-breadcrumb .text-primary,
+  .custom-breadcrumb span:not([class]) {
+    color: #fff !important;
+  }
+
   .hero-slider {
     position: absolute;
     top: 0;

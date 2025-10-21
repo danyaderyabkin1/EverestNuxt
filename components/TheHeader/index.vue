@@ -45,55 +45,16 @@ watch(() => route.path, () => {
       </NuxtLink>
       <nav class="nav">
         <ul class="nav__list">
-<!--          <li class="nav__item" v-for="category in mainCategories?.categories" :key="category.id">-->
-<!--            <NuxtLink v-if="category.id !== 14" class="nav__link" :to="category.url">{{category.title}}-->
-<!--              <UIcon v-if="category.id !== 13" name="lucide:chevron-down" class="size-5"/>-->
-<!--            </NuxtLink>-->
-<!--            <NuxtLink class="nav__link cursor-default" v-if="category.id === 14">{{category.title}}-->
-<!--              <UIcon  name="lucide:chevron-down" class="size-5"/>-->
-<!--            </NuxtLink>-->
-<!--            <ClientOnly>-->
-<!--              <TheHeaderSubMenu :sub-category="category?.subCategories"/>-->
-<!--            </ClientOnly>-->
-<!--          </li>-->
-<!--          <li class="nav__item">-->
-<!--            <NuxtLink class="nav__link" to="/contacts">Контакты</NuxtLink>-->
-<!--          </li>-->
-<!--          <li class="nav__item">-->
-<!--            <NuxtLink class="nav__link" to="/vopros-otvet">Вопрос-ответ-->
-<!--            </NuxtLink>-->
-<!--          </li>-->
-          <li class="nav__item">
-            <NuxtLink class="nav__link" to="/aboutus">Каталог продукции
-              <UIcon name="lucide:chevron-down" class="size-5"/>
+          <li class="nav__item" v-for="category in mainCategories?.categories" :key="category.id">
+            <NuxtLink v-if="category.id !== 14" class="nav__link" :to="category.url">{{category.title}}
+              <UIcon v-if="category.id !== 13" name="lucide:chevron-down" class="size-5"/>
             </NuxtLink>
-            <ul class="nav__list-dropdown">
-              <li>
-                <NuxtLink to="/contacts">Вентиляционное оборудование</NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/aboutus">Кондиционеры</NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/pay">Расходные материалы</NuxtLink>
-              </li>
-              </ul>
-          </li>
-          <li class="nav__item">
-            <NuxtLink class="nav__link" to="/proekty">Наши проекты
-              <UIcon name="lucide:chevron-down" class="size-5"/>
+            <NuxtLink class="nav__link cursor-default" v-if="category.id === 14">{{category.title}}
+              <UIcon  name="lucide:chevron-down" class="size-5"/>
             </NuxtLink>
-            <ul class="nav__list-dropdown">
-              <li>
-                <NuxtLink to="/contacts">Проектирование</NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/aboutus">Монтаж</NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/pay">Сервис</NuxtLink>
-              </li>
-              </ul>
+            <ClientOnly>
+              <TheHeaderSubMenu :sub-category="category?.subCategories"/>
+            </ClientOnly>
           </li>
           <li class="nav__item">
             <NuxtLink class="nav__link" to="/aboutus">О компании

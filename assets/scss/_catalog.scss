@@ -1,0 +1,24 @@
+.catalog {
+  padding: 2rem 0 4rem;
+  @include sm-mobile {
+    padding: 2rem 0;
+  }
+  &__container {
+    padding: 3rem 2rem;
+    background: radial-gradient(50% 50% at 50% 50%, #FDFDFD 0%, #EAF0F0 100%);
+    border: 5px solid $white;
+    @include sm-mobile {
+      padding: 1rem 0.5rem;
+    }
+  }
+  h3 {
+    font-size: 30px;
+    font-weight: $fwBold;
+  }
+  &__title {
+    background: #FFFFFFDB;
+    backdrop-filter: blur(7px);
+    padding: 1rem;
+    border-radius: 20px;
+  }
+}
