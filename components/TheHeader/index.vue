@@ -12,7 +12,7 @@ const { data: mainCategories } = await useLazyAsyncData('categories', async () =
   const withSubs = await Promise.all(
       categories.map(async cat => ({
         ...cat,
-        subCategories: await fetchProducts(cat.id, '', '')
+        subCategories: await fetchCategories(cat.id, '', '')
       }))
   );
   return { categories: withSubs };
@@ -46,14 +46,25 @@ watch(() => route.path, () => {
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item" v-for="category in mainCategories?.categories" :key="category.id">
-            <NuxtLink v-if="category.id !== 14" class="nav__link" :to="category.url">{{category.title}}
-              <UIcon v-if="category.id !== 13" name="lucide:chevron-down" class="size-5"/>
+            <NuxtLink class="nav__link" :to="category.url">
+              {{category.title}}
+              <UIcon name="lucide:chevron-down" class="size-5"/>
             </NuxtLink>
-            <NuxtLink class="nav__link cursor-default" v-if="category.id === 14">{{category.title}}
-              <UIcon  name="lucide:chevron-down" class="size-5"/>
-            </NuxtLink>
-            <ClientOnly>
-              <TheHeaderSubMenu :sub-category="category?.subCategories"/>
+            <ClientOnly v-if="category.id !== 503">
+              <TheHeaderSubMenu  :sub-category="category?.subCategories"/>
+            </ClientOnly>
+            <ClientOnly v-else>
+              <ul class="nav__list-dropdown">
+                <li>
+                  <NuxtLink to="/proekty">Проектирование</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/proekty">Монтаж</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/proekty">Сервис</NuxtLink>
+                </li>
+              </ul>
             </ClientOnly>
           </li>
           <li class="nav__item">
@@ -62,19 +73,19 @@ watch(() => route.path, () => {
             </NuxtLink>
             <ul class="nav__list-dropdown">
               <li>
-                <NuxtLink to="/contacts">Контактная информация</NuxtLink>
+                <NuxtLink to="/aboutus#description">Контактная информация</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/aboutus">История</NuxtLink>
+                <NuxtLink to="/aboutus#cooperation">История</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/pay">Партнеры</NuxtLink>
+                <NuxtLink to="/catalog/ventiliaciia#clients">Партнеры</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/pay">Новости компании</NuxtLink>
+                <NuxtLink to="/news">Новости компании</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/reviews">Реквизиты и лицензии</NuxtLink>
+                <NuxtLink to="/aboutus#contacts">Реквизиты и лицензии</NuxtLink>
               </li>
               </ul>
           </li>

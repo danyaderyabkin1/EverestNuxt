@@ -3,7 +3,7 @@
   top: 0;
   border-radius: 10px;
   padding: 0 1rem;
-  z-index: 99;
+  z-index: 49;
   transition: all .8s;
   background-color: $white;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
@@ -263,7 +263,7 @@
 
 
         &.router-link-active {
-          color: #C7B6A6;
+          color: $primaryColor;
         }
       }
     }

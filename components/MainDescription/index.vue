@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="description">
+  <section class="description" id="description">
     <div class="container description__container">
       <h2 class="title mt-4 mb-8 md:mt-8 md:mb-16">{{ title }}</h2>
       <ul class="description__list">

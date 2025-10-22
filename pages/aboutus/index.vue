@@ -46,7 +46,7 @@ const itemsThx = [
       />
     </div>
     <CollectionsWelcome/>
-    <section class=" cooperation ">
+    <section class=" cooperation" id="cooperation">
       <div class="mx-auto px-4 sm:px-10 lg:px-14 py-4 sm:py-10 lg:py-14 max-w-7xl bg-[#EFF0F2] lg:rounded-[45px]">
         <h2 class="title mb-8">История компании</h2>
 

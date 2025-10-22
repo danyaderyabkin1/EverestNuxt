@@ -1,4 +1,15 @@
 <script setup lang="ts">
+const {fetchCategories} = useCategories()
+const { data: mainCategories } = await useLazyAsyncData('categories', async () => {
+  const categories = await fetchCategories();
+  const withSubs = await Promise.all(
+      categories.map(async cat => ({
+        ...cat,
+        subCategories: await fetchCategories(cat.id, '', '')
+      }))
+  );
+  return { categories: withSubs };
+});
 useSeoMeta({
   title: 'Комплексное оснащение отелей и гостиниц: от мебели до текстиля',
   ogTitle: 'Комплексное оснащение отелей и гостиниц: от мебели до текстиля',
@@ -25,28 +36,17 @@ useSeoMeta({
         :not-main-banner="false"/>
     <HomeCooperationSwiper/>
     <section class="catalog">
-      <div class="container catalog__container rounded-3xl lg:rounded-[45px]">
+      <div class="container catalog__container max-w-7xl rounded-3xl lg:rounded-[45px]">
         <div class="text-center mt-4 md:mt-0">
           <h3>Каталог товаров</h3>
         </div>
-        <div class="flex flex-wrap  justify-center items-center md:p-4">
-          <div class="w-full md:w-2/5 lg:w-1/3 p-4">
-            <div class="relative catalog__wrapper">
-              <h4 class="catalog__title md:w-2/3 text-lg font-semibold absolute top-10 text-center  left-1/2 -translate-x-1/2">Вентиляционное оборудование</h4>
-              <img src="/public/assets/images/efde14662d39bfcb31bb0649851be1ac029294d5.png" alt="Ventilation Equipment" class="w-full h-auto rounded-3xl mt-2">
-            </div>
-          </div>
-          <div class="w-full md:w-2/5 lg:w-1/3 p-4">
-            <div class="relative catalog__wrapper">
-              <h4 class="catalog__title md:w-2/3 text-lg font-semibold absolute top-10 text-center  left-1/2 -translate-x-1/2">Кондиционеры</h4>
-              <img src="/public/assets/images/efde14662d39bfcb31bb0649851be1ac029294d5.png" alt="Air Conditioners" class="w-full h-auto rounded-3xl mt-2">
-            </div>
-          </div>
-          <div class="w-full md:w-2/5 lg:w-1/3 p-4">
-            <div class="relative catalog__wrapper">
-              <h4 class="catalog__title md:w-2/3 text-lg font-semibold absolute top-10 text-center  left-1/2 -translate-x-1/2">Расходные материалы</h4>
-              <img src="/public/assets/images/efde14662d39bfcb31bb0649851be1ac029294d5.png" alt="Consumables" class="w-full h-auto rounded-3xl mt-2">
-            </div>
+        <div v-for="item in mainCategories?.categories" class="flex flex-wrap  justify-center items-center md:p-4">
+          <div v-if="item.id === 505" v-for="sub in item.subCategories" class="w-full md:w-2/5 lg:w-1/3 p-4">
+            <NuxtLink :to="`${sub.url}`" class="relative catalog__wrapper">
+              <h4 class="catalog__title md:w-2/3 text-lg font-semibold absolute top-10 text-center  left-1/2 -translate-x-1/2">{{sub?.title}}</h4>
+              <img v-if="sub?.preview_image" :src="`${sub?.preview_image}`" alt="Ventilation Equipment" class="w-full xl:h-[580px] object-cover rounded-3xl mt-2">
+              <img v-else src="/assets/images/nophoto.jpg" alt="Ventilation Equipment" class="w-full xl:h-[580px] object-cover rounded-3xl mt-2">
+            </NuxtLink>
           </div>
         </div>
       </div>

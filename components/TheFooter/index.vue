@@ -49,35 +49,26 @@ const acceptCookieMain = () => cookieMain.value = '1'
         <div class="nav__wrap">
           <h3>Каталог</h3>
           <div class="nav__double">
-<!--              <TheFooterSubMenu/>-->
+              <TheFooterSubMenu/>
           </div>
         </div>
         <div class="nav__wrap">
           <h3>О компании</h3>
           <ul class="nav__list">
             <li class="nav__item">
-              <NuxtLink class="nav__link" to="/aboutus#about">Вступление</NuxtLink>
+              <NuxtLink class="nav__link" to="/aboutus#description">Контактная информация</NuxtLink>
             </li>
             <li class="nav__item">
-              <NuxtLink class="nav__link" to="/news">Публикации</NuxtLink>
-            </li>
-<!--            <li class="nav__item">-->
-<!--              <NuxtLink class="nav__link" to="/aboutus#sert">Сертификаты</NuxtLink>-->
-<!--            </li>-->
-<!--            <li class="nav__item">-->
-<!--              <NuxtLink class="nav__link" to="/aboutus#thank">Благодарности</NuxtLink>-->
-<!--            </li>-->
-            <li class="nav__item">
-              <NuxtLink class="nav__link" to="/aboutus#pay">Оплата и доствка</NuxtLink>
+              <NuxtLink class="nav__link" to="/aboutus#cooperation">История</NuxtLink>
             </li>
             <li class="nav__item">
-              <NuxtLink class="nav__link" to="/contacts">Контактная информация</NuxtLink>
+              <NuxtLink class="nav__link" to="/catalog/ventiliaciia#clients">Партнеры</NuxtLink>
             </li>
-<!--            <li class="nav__item">-->
-<!--              <NuxtLink class="nav__link" to="/aboutus#contacts">Обратная связь</NuxtLink>-->
-<!--            </li>-->
             <li class="nav__item">
-              <NuxtLink class="nav__link" to="/politika">Персональные данные</NuxtLink>
+              <NuxtLink class="nav__link" to="/news">Новости компании</NuxtLink>
+            </li>
+            <li class="nav__item">
+              <NuxtLink class="nav__link" to="/aboutus#contacts">Реквизиты</NuxtLink>
             </li>
             <li class="hidden xl:flex justify-end mt-auto w-full">
               <a href="https://moovix.ru/" target="_blank" rel="noopener noreferrer">

@@ -381,33 +381,33 @@ const {fetchCategories} = useCategoriesBySlug();
 const itemsClients = ref([
   {
     id: 1,
-    img: 'big-logo-400x401.webp',
-    link: 'https://malamut-land.ru/'
+    img: '007d6f264d28a5922d79fe7620cfbbe06103c304.png',
+    link: '#'
   },
   {
     id: 2,
-    img: '6568454.webp',
-    link: 'https://berejkihall.ru/'
+    img: '9a035c724468180b501268cd1ec7df96a20e8238.png',
+    link: '#'
   },
   {
     id: 3,
-    img: 'hMw1vPZugEFRQVErdYn7RQursDW6tIJe6cemmZairdPPKvbOpQB0GceuF1avpxPClcf_6NntlnsgFQls8UVbce0v.webp',
-    link: 'https://vk.com/ax_alta'
+    img: '874cd05bd1cc408aa96b2371a8a6cdb5783c6c1d.png',
+    link: '#'
   },
   {
     id: 4,
-    img: 'logo.svg',
-    link: 'https://imera.ru/'
+    img: '6691fc33c4fc96b62a726c00054f5e64cb2c64d4.png',
+    link: '#'
   },
   {
     id: 5,
-    img: 'logo_utes.svg',
-    link: 'https://uteshotel.com/aktsii/'
+    img: 'a2af3b9871a8aa3920c7057986be7c2fe970197a.png',
+    link: '#'
   },
   {
     id: 6,
-    img: '_logo_vector_2_RGB_b.svg',
-    link: 'https://chigish.ru/'
+    img: 'aa168670fe0199893e8fb974a46f6856a0a5cfdd.png',
+    link: '#'
   }
 ])
 // const {fetchWidgetByCode} = useWidgets();
