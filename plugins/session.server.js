@@ -1,7 +1,12 @@
 export default defineNuxtPlugin(async (nuxtApp) => {
     const token = useCookie('_token');
+    const config = useRuntimeConfig();
     if (!token.value) {
-        const response = await $fetch.raw(`https://b.otellica.ru/api/user/startSession`);
-        token.value = await response._data.data.token;
+        try {
+            const response = await $fetch.raw(`${config.public.siteUrlApi}/api/user/startSession`);
+            token.value = response._data.data.token;
+        } catch (error) {
+            console.error('❌ Session error:', error);
+        }
     }
-})
+});
